@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>MIU Student Registration - View Students</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👤</text></svg>">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+  <header th:replace="fragments/header :: header"></header>
+  <main class="container">
+    <h1 class="mt-4">View Students</h1>
+    <div>
+      <p><a href="/eregister/student/new">Add Student</a></p>
+    </div>
+    <table class="table table-hover table-bordered table-light">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Student Number</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Middle Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">CGPA</th>
+          <th scope="col">Date Of Enrollment</th>
+          <th scope="col">Is International</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="student, counter : ${students}">
+          <th scope="row" th:text="${counter.count}+${'.'}"></th>
+          <td th:text="${student.studentNumber}"></td>
+          <td th:text="${student.firstName}"></td>
+              <td th:if="${student.middleName == null}">
+                <p>
+                  <span th:text="${' '}"></span>
+                </p>
+              </td>
+          <td th:if="${student.middleName != null}">
+            <p>
+            <span th:text="${student.middleName}"></span>
+            </p>
+          </td>
+          <td th:text="${student.lastName}"></td>
+          <td th:text="${student.cgpa}"></td>
+          <td th:text="${student.dateOfEnrollment}"></td>
+          <td th:text="${student.isInternational}"></td>
+          <td><a th:href="@{'/eregister/student/edit/{studentId}'(studentId=${student.studentId})}">Edit</a></td>
+          <td><a th:href="@{'/eregister/student/delete/{studentId}'(studentId=${student.studentId})}">Delete</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>
