@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>MIU Student Registration - New Student</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👤</text></svg>">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+  <header th:replace="fragments/header :: header"></header>
+  <main class="container">
+    <h1 class="mt-4">Register Student</h1>
+      <form method="post" action="/eregister/student/new" th:object="${student}">
+        <fieldset>
+          <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <label for="studentNumber">Student Number</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroupPrepend3">#</span>
+                </div>
+                <input name= studentNumber type="number" class="form-control" id="studentNumber" placeholder="123456" th:value="${student.studentNumber}" aria-describedby="inputGroupPrepend3" required autofocus>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="firstName">First name</label>
+              <input name="firstName" type="text" class="form-control" id="firstName" placeholder="Jane" th:value="${student.firstName}" required>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="middleName">Middle name</label>
+              <input name="middleName" type="text" class="form-control" id="middleName" placeholder="Joan" th:value="${student.middleName}">
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="lastName">Last name</label>
+              <input name="lastName" type="text" class="form-control" id="lastName" placeholder="Doe" th:value="${student.lastName}" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-3 mb-3">
+              <label for="cgpa">CGPA</label>
+              <input name="cgpa" type="text" class="form-control" id="cgpa" placeholder="4.0" th:value="${student.cgpa}" required>
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="isInternational">Nationality</label>
+              <select name="isInternational" id="isInternational" class="form-control" th:value="${student.isInternational}">
+                <option name="isInternational" th:value=true>International</option>
+                <option name="isInternational" th:value=false>US Citizen</option>
+              </select>
+              <div class="invalid-feedback">
+                Please provide a valid nationality.
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <button class="btn btn-outline-secondary" href="/eregister/student/list">Cancel</button>
+        <input class="btn btn-secondary" type="reset" value="Reset">
+        <input class="btn btn-primary" type="submit" value="Add Student">
+      </form>
+    </div>
+  </main>
+</body>
+</html>
