@@ -1,0 +1,35 @@
+<header th:fragment="header" xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    <nav class="navbar navbar-dark navbar-expand-lg bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/eregister/public/home">MIU Student Registration</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/eregister/public/home">Home</a>
+                    </li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item">
+                        <a class="nav-link" href="/eregister/secured/student/list">Students</a>
+                    </li>
+                </ul>
+                <form name="logoutForm" th:hidden="true" method="post" th:action="@{/eregister/public/logout}">
+                    <input type="submit" value="Logout" />
+                </form>
+                <section class="d-flex">
+                    <span sec:authorize="isAnonymous()" style="color:#fff;padding-left: 2em; padding-right: 1em;"></span>
+                    <span sec:authorize="isAuthenticated()" style="color:#fff;padding-left: 0em; padding-right: 0.5em;"></span>
+                    <span sec:authorize="isAuthenticated()" style="color:#fff;padding-left: 0em; padding-right: 0.5em;" sec:authentication="principal.fullName"></span>
+                    <a sec:authorize="isAnonymous()" href="/eregister/public/login" class="px-2">
+                        <button id="signIn" class="btn btn-light">Sign In</button>
+                    </a>
+                    <a href="javascript: logoutForm.submit();" sec:authorize="isAuthenticated()">
+                        <button id="signOut" class="btn btn-light">Sign Out</button>
+                    </a>
+                </section>
+            </div>
+        </div>
+    </nav>
+</header>

@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
+<head th:replace="public/fragments/head-elements :: headElements">
     <title>MIU Student Registration - Edit Student</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👤</text></svg>">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
-    <header th:replace="fragments/header :: header"></header>
+    <header th:replace="public/fragments/header :: header"></header>
     <main class="container">
         <h1 class="mt-4">Edit Student</h1>
         <div>
-            <form method="post" action="/eregister/student/update" th:object="${student}">
+            <form method="post" action="/eregister/public/student/update" th:object="${student}">
                 <fieldset>
                     <input name="studentId" type="hidden" th:value="${student.studentId}">
                 </fieldset>
@@ -56,7 +53,7 @@
                         </div>
                     </div>
                 </fieldset>
-                <button class="btn btn-outline-secondary" href="/eregister/student/list">Cancel</button>
+                <button class="btn btn-outline-secondary" href="/eregister/secured/student/list">Cancel</button>
                 <input class="btn btn-secondary" type="reset" value="Reset">
                 <input class="btn btn-primary" type="submit" value="Update Student">
             </form>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="public/fragments/head-elements :: headElements">
+    <title>MIU Student Registration</title>
+</head>
+<body>
+<header th:replace="public/fragments/header :: header"></header>
+<main>
+    <div class="container">
+        <h1 class="mt-4">Student Registration</h1>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="https://images.unsplash.com/photo-1543269664-7eef42226a21?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Student Registration</h5>
+                        <p class="card-text">Option for register new students.</p>
+                        <a tabindex="-1" role="button" aria-disabled="true" class="btn btn-primary" href="/eregister/secured/student/new">Register Student</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Student Visualization</h5>
+                        <p class="card-text">View all registered students.</p>
+                        <a tabindex="-1" role="button" aria-disabled="true" class="btn btn-secondary" href="/eregister/secured/student/list">View Students</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

@@ -8,6 +8,6 @@ public class HomePageController {
 
     @GetMapping({"/", "/eregister", "/eregister/home"})
     public String displayHomePage() {
-        return "home/index";
+        return "public/home/index";
     }
 }
